@@ -1,5 +1,15 @@
-import '@/styles/globals.css'
+import ErrorBoundary from "@/lib/components/ErrorBoundry";
+import { NetworkProvider } from "@/lib/components/context/NetworkProvider";
+import "@/styles/globals.css";
 
-export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />
+function App({ Component, pageProps }) {
+	return (
+		<ErrorBoundary>
+			<NetworkProvider>
+				<Component {...pageProps} />
+			</NetworkProvider>
+		</ErrorBoundary>
+	);
 }
+
+export default App;
